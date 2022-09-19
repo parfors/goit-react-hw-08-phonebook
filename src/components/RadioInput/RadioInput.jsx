@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { setColor } from 'redux/color/color-Slice';
 
-export const RadioInput = ({ radioOptions }) => {
+export const RadioInput = () => {
   const color = useSelector(state => state.contacts.color);
   const dispatch = useDispatch();
 
@@ -13,27 +13,15 @@ export const RadioInput = ({ radioOptions }) => {
 
   return (
     <>
-      {radioOptions.map(el => (
-        <LabelRadio key={el}>
-          <InputRadioStyled
-            name="color"
-            type="radio"
-            checked={color === { el }}
-            onChange={onChange}
-            value={el}
-          />
-          {el}
-        </LabelRadio>
-      ))}
-      {/* <LabelRadio>
+      <LabelRadio>
         <InputRadioStyled
           name="color"
           type="radio"
-          checked={color === { el }}
+          checked={color === 'green'}
           onChange={onChange}
-          value={el}
+          value="green"
         />
-        {el}{' '}
+        green
       </LabelRadio>
       <LabelRadio>
         <InputRadioStyled
@@ -54,7 +42,7 @@ export const RadioInput = ({ radioOptions }) => {
           value="grey"
         />
         Grey
-      </LabelRadio> */}
+      </LabelRadio>
     </>
   );
 };

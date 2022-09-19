@@ -2,7 +2,13 @@
 import { nanoid } from 'nanoid';
 import PropTypes from 'prop-types';
 import { useLocalStorage } from 'hooks';
-import { FormStyled, LabelStyled, ButtonStyled, InputStyled } from 'components';
+import {
+  FormStyled,
+  LabelStyled,
+  ButtonStyled,
+  LabelSpanStyled,
+  InputStyled,
+} from 'components';
 
 export const Form = ({ onSubmit }) => {
   const [name, setName] = useLocalStorage('name', '');
@@ -48,7 +54,7 @@ export const Form = ({ onSubmit }) => {
     <>
       <FormStyled onSubmit={handleSubmit}>
         <LabelStyled>
-          Name
+          <LabelSpanStyled>Name</LabelSpanStyled>
           <InputStyled
             type="text"
             name="name"
@@ -60,7 +66,7 @@ export const Form = ({ onSubmit }) => {
           />
         </LabelStyled>
         <LabelStyled>
-          Tel
+          <LabelSpanStyled>Tel</LabelSpanStyled>
           <InputStyled
             type="tel"
             name="number"

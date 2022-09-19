@@ -1,11 +1,13 @@
-import { ParagraphStyled, InputStyled } from 'components';
+import { ParagraphStyled, InputStyled, FilterWrapStyled } from 'components';
 import PropTypes from 'prop-types';
 
 export const Filter = ({ value, onChange }) => {
   return (
     <>
-      <ParagraphStyled>Find contact by name</ParagraphStyled>
-      <InputStyled name="filter" onChange={onChange} value={value} />
+      <FilterWrapStyled>
+        <ParagraphStyled>Find contact by name</ParagraphStyled>
+        <InputStyled name="filter" onChange={onChange} value={value} />
+      </FilterWrapStyled>
     </>
   );
 };

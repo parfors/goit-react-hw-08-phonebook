@@ -1,16 +1,26 @@
 import styled from 'styled-components';
 
 export const SectionStyled = styled.section`
-  width: 250px;
+  max-width: 1250px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 20px;
+  padding-bottom: 20px;
 `;
 
 export const TitleStyled = styled.h2`
   font-size: 18 px;
   font-weight: 600;
-  margin-left: 20px;
+  text-align: center;
 `;
 
-export const FormStyled = styled.form``;
+export const FormWrapStyled = styled.div`
+  display: flex;
+  justify-content: flex-start;
+`;
+export const FormStyled = styled.form`
+  width: calc(100% / 2);
+`;
 
 export const LabelStyled = styled.label`
   font-size: 14px;
@@ -18,8 +28,7 @@ export const LabelStyled = styled.label`
   margin-left: 10px;
   margin-bottom: 10px;
   color: black;
-  display: flex;
-  justify-content: space-between;
+  display: block;
 `;
 
 export const InputStyled = styled.input`
@@ -29,6 +38,10 @@ export const InputStyled = styled.input`
   color: black;
   border: 2px solid black;
   border-radius: 4px;
+`;
+export const LabelSpanStyled = styled.span`
+  display: inline-block;
+  width: 60px;
 `;
 
 export const ButtonStyled = styled.button`
@@ -40,11 +53,20 @@ export const ButtonStyled = styled.button`
   margin: 15px 0 0 100px;
 `;
 
-export const ListStyled = styled.ol``;
+export const ListStyled = styled.ol`
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+`;
 
 export const ListItem = styled.li`
+  flex-basis: calc(100% / 4 - 20px);
   margin-left: 20px;
   margin-bottom: 10px;
+`;
+
+export const FilterWrapStyled = styled.div`
+  text-align: center;
 `;
 
 export const ParagraphStyled = styled.p`
@@ -59,15 +81,15 @@ export const ButtonDeleteStyled = styled.button`
   margin: 10px 0 0 50px;
 `;
 
+export const RadioInputWrapStyled = styled.div``;
+
 export const InputRadioStyled = styled.input`
   background-color: #0080002f;
   margin-left: 20px;
   margin-right: 10px;
 `;
 
-export const LabelRadio = styled(LabelStyled)`
-  justify-content: flex-start;
-`;
+export const LabelRadio = styled(LabelStyled)``;
 
 export const InputCheckStyled = styled.input`
   margin-left: 20px;
