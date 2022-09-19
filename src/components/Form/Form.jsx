@@ -54,7 +54,7 @@ export const Form = ({ onSubmit }) => {
     <>
       <FormStyled onSubmit={handleSubmit}>
         <LabelStyled>
-          <LabelSpanStyled>Name</LabelSpanStyled>
+          <LabelSpanStyled>Enter contact Name</LabelSpanStyled>
           <InputStyled
             type="text"
             name="name"
@@ -66,7 +66,7 @@ export const Form = ({ onSubmit }) => {
           />
         </LabelStyled>
         <LabelStyled>
-          <LabelSpanStyled>Tel</LabelSpanStyled>
+          <LabelSpanStyled>Enter contact Tel</LabelSpanStyled>
           <InputStyled
             type="tel"
             name="number"

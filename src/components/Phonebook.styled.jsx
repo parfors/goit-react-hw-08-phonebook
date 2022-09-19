@@ -41,7 +41,8 @@ export const InputStyled = styled.input`
 `;
 export const LabelSpanStyled = styled.span`
   display: inline-block;
-  width: 60px;
+  min-width: 150px;
+  margin-right: 20px;
 `;
 
 export const ButtonStyled = styled.button`
