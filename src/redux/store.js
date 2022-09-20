@@ -1,3 +1,45 @@
+// import { configureStore } from '@reduxjs/toolkit';
+// import {
+//   persistStore,
+//   persistReducer,
+//   FLUSH,
+//   REHYDRATE,
+//   PAUSE,
+//   PERSIST,
+//   PURGE,
+//   REGISTER,
+// } from 'redux-persist';
+// import storage from 'redux-persist/lib/storage';
+// import { PersistGate } from 'redux-persist/integration/react';
+
+// import authReducer from './reducers';
+// import contactsReducer from './contacts/contacts-reducer';
+// import colorReducer from './color/color-Slice';
+// import filterReducer from './filter/filter-Slice';
+
+// const persistConfig = {
+//   key: 'auth',
+//   storage,
+// };
+
+// const persistedReducer = persistReducer(persistConfig, authReducer);
+
+// const store = configureStore({
+//   reducer: {
+//     auth: persistedReducer,
+//     contacts: contactsReducer,
+//     color: colorReducer,
+//   },
+//   middleware: getDefaultMiddleware =>
+//     getDefaultMiddleware({
+//       serializableCheck: {
+//         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+//       },
+//     }),
+// });
+
+// export const persistor = persistStore(store);
+
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import colorReducer from './color/color-Slice';
 import contactsReducer from './contacts/contacts-reducer';
@@ -15,7 +57,6 @@ export const store = configureStore({
   },
 });
 
-// console.log('first')
 // ===============================USING REDUX-TOOLKIT=================================
 
 // import { configureStore } from '@reduxjs/toolkit';

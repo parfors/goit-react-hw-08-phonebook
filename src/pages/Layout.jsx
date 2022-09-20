@@ -10,9 +10,12 @@ export default function Layout() {
       <SectionStyled>
         <HeaderStyled>
           <NavContainerStyled>
+            <NavLinkStyled to="/home">Home</NavLinkStyled>
+            <NavLinkStyled to="/contacts">Contacts</NavLinkStyled>
+          </NavContainerStyled>
+          <NavContainerStyled>
             <NavLinkStyled to="/register">Sign up</NavLinkStyled>
             <NavLinkStyled to="/login">Sign in</NavLinkStyled>
-            <NavLinkStyled to="/contacts">Contacts</NavLinkStyled>
           </NavContainerStyled>
           <UserMenu />
         </HeaderStyled>
