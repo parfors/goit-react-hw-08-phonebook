@@ -3,22 +3,31 @@ import { NavLink } from 'react-router-dom';
 import { SectionStyled } from 'components';
 import { Outlet } from 'react-router-dom';
 import UserMenu from 'components/UserMenu/UserMenu';
+import { ToastContainer } from 'react-toastify';
+import { useSelector } from 'react-redux';
+import { getIsLogIn } from 'redux/authorization/selectors';
 
 export default function Layout() {
+  const isLoggedIn = useSelector(getIsLogIn);
   return (
     <>
       <SectionStyled>
+        <ToastContainer />
         <HeaderStyled>
           <NavContainerStyled>
             <NavLinkStyled to="/home">Home</NavLinkStyled>
             <NavLinkStyled to="/contacts">Contacts</NavLinkStyled>
           </NavContainerStyled>
-          <NavContainerStyled>
-            <NavLinkStyled to="/register">Sign up</NavLinkStyled>
-            <NavLinkStyled to="/login">Sign in</NavLinkStyled>
-          </NavContainerStyled>
-          <UserMenu />
+          {isLoggedIn ? (
+            <UserMenu />
+          ) : (
+            <NavContainerStyled>
+              <NavLinkStyled to="/register">Sign up</NavLinkStyled>
+              <NavLinkStyled to="/login">Sign in</NavLinkStyled>
+            </NavContainerStyled>
+          )}
         </HeaderStyled>
+        <hr />
         <Outlet />
       </SectionStyled>
     </>

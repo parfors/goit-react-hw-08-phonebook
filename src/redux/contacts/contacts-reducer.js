@@ -4,7 +4,7 @@ import { addContact, deleteContact, fetchContacts } from './contact-operations';
 const initialState = {
   contacts: [],
   loading: false,
-  error: true,
+  error: null,
 };
 
 const contactsReducer = createReducer(initialState, {
@@ -22,7 +22,7 @@ const contactsReducer = createReducer(initialState, {
   },
   [addContact.pending]: state => {
     state.loading = true;
-    state.error = false;
+    state.error = null;
   },
   [addContact.fulfilled]: (state, { payload }) => {
     state.contacts.push(payload);
@@ -34,7 +34,7 @@ const contactsReducer = createReducer(initialState, {
   },
   [deleteContact.pending]: state => {
     state.loading = true;
-    state.error = false;
+    state.error = null;
   },
   [deleteContact.fulfilled]: (state, { payload }) => {
     state.loading = false;
@@ -42,7 +42,7 @@ const contactsReducer = createReducer(initialState, {
   },
   [deleteContact.rejected]: (state, { payload }) => {
     state.error = payload;
-    state.error = false;
+    state.loading = false;
   },
 });
 

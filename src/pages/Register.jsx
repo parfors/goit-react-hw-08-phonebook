@@ -1,22 +1,58 @@
 import { LabelSpanStyled, SectionStyled, TitleStyled } from 'components';
 import styled from 'styled-components';
+import useForm from 'hooks/useForm';
+import { useDispatch } from 'react-redux';
+import { sighUp } from 'redux/authorization/auth-operations';
+
+const initialState = {
+  name: '',
+  email: '',
+  password: '',
+};
 
 export default function Register() {
+  const dispatch = useDispatch();
+  const submitFunction = data => {
+    dispatch(sighUp(data));
+  };
+
+  const { state, handleChange, handleSubmit } = useForm(
+    initialState,
+    submitFunction
+  );
+
+  const { name, email, password } = state;
+
   return (
     <SectionStyled>
       <TitleStyled>Register Form</TitleStyled>
-      <RegisterFormStyled>
+      <RegisterFormStyled onSubmit={handleSubmit}>
         <RegisterLabelStyled>
           <LabelSpanStyled>Name</LabelSpanStyled>
-          <RegisterInputStyled type="text" />
+          <RegisterInputStyled
+            value={name}
+            name="name"
+            onChange={handleChange}
+            type="text"
+          />
         </RegisterLabelStyled>
         <RegisterLabelStyled>
           <LabelSpanStyled>Email</LabelSpanStyled>
-          <RegisterInputStyled type="email" />
+          <RegisterInputStyled
+            value={email}
+            name="email"
+            onChange={handleChange}
+            type="email"
+          />
         </RegisterLabelStyled>
         <RegisterLabelStyled>
           <LabelSpanStyled>Password</LabelSpanStyled>
-          <RegisterInputStyled type="password" />
+          <RegisterInputStyled
+            value={password}
+            name="password"
+            onChange={handleChange}
+            type="password"
+          />
         </RegisterLabelStyled>
         <RegisterButtonStyled type="submit">Sign up</RegisterButtonStyled>
       </RegisterFormStyled>

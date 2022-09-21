@@ -19,4 +19,7 @@ export const HomeIconStyled = styled(AiOutlineHome)`
   margin-left: auto;
   margin-right: auto;
   display: block;
+  &:hover {
+    fill: blue;
+  }
 `;
