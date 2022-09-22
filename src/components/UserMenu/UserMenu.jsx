@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import { getEmail } from 'redux/authorization/selectors';
+import { getEmail } from 'redux/selectors';
 import styled from 'styled-components';
 import { FaRegSmileWink } from 'react-icons/fa';
 import { useDispatch } from 'react-redux';

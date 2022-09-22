@@ -56,6 +56,18 @@ const authSlice = createSlice({
       state.loading = false;
       state.error = payload;
     },
+    [authOperations.checkCurrentLogin.pending]: state => {
+      state.loading = true;
+    },
+    [authOperations.checkCurrentLogin.fulfilled]: (state, { payload }) => {
+      state.user.name = payload.name;
+      state.user.email = payload.email;
+      state.isLoggedIn = true;
+      state.loading = false;
+    },
+    [authOperations.checkCurrentLogin.rejected]: state => {
+      state.loading = false;
+    },
   },
 });
 

@@ -1,6 +1,5 @@
 import * as api from 'helpers/api';
 import { toast } from 'react-toastify';
-
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
 export const fetchContacts = createAsyncThunk(
@@ -24,6 +23,8 @@ export const addContact = createAsyncThunk(
 
       return result;
     } catch (error) {
+      toast.error('Error in adding contact');
+
       return thunkAPI.rejectWithValue(error);
     }
   },
@@ -31,7 +32,7 @@ export const addContact = createAsyncThunk(
     condition: (contact, { getState }) => {
       const normalizedData = contact.name.toLowerCase();
       const state = getState();
-      const contacts = state.contacts.items.contacts;
+      const contacts = state.contacts.contacts;
       if (contacts.some(el => el.name.toLowerCase() === normalizedData)) {
         alert(`${contact.name} is already in contacts`);
         return false;

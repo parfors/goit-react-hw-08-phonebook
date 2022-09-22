@@ -13,13 +13,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import 'react-toastify/dist/ReactToastify.css';
 import { addContact, fetchContacts } from 'redux/contacts/contact-operations';
 import { setFilter } from 'redux/filter/filter-Slice';
+import { getColor, getFilter, getLoadingContacts } from 'redux/selectors';
 
 export default function Contacts() {
   const dispatch = useDispatch();
   const contacts = useSelector(state => state.contacts.contacts);
-  const filter = useSelector(state => state.filter);
-  const color = useSelector(state => state.color);
-  const loading = useSelector(state => state.loading);
+  const filter = useSelector(getFilter);
+  const color = useSelector(getColor);
+  const loading = useSelector(getLoadingContacts);
 
   useEffect(() => {
     dispatch(fetchContacts());
@@ -52,7 +53,9 @@ export default function Contacts() {
         {loading ? (
           <TitleStyled>Loading...</TitleStyled>
         ) : (
-          <ContactsList contacts={visibleContacts} />
+          <ContactsList contacts={visibleContacts} /> || (
+            <TitleStyled>Error</TitleStyled>
+          )
         )}
       </SectionStyled>
     </>

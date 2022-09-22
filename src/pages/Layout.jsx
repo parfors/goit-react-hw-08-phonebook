@@ -1,31 +1,47 @@
-import styled from 'styled-components';
-import { NavLink } from 'react-router-dom';
 import { SectionStyled } from 'components';
-import { Outlet } from 'react-router-dom';
 import UserMenu from 'components/UserMenu/UserMenu';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { NavLink, Outlet } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
-import { useSelector } from 'react-redux';
-import { getIsLogIn } from 'redux/authorization/selectors';
+import { checkCurrentLogin } from 'redux/authorization/auth-operations';
+import { getIsLogIn, getLoading } from 'redux/selectors';
+import styled from 'styled-components';
 
 export default function Layout() {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(checkCurrentLogin());
+  }, [dispatch]);
   const isLoggedIn = useSelector(getIsLogIn);
+  const loading = useSelector(getLoading);
+
+  let visibleMenu;
+  if (loading === true) {
+    visibleMenu = <LoadingStyled>Loading...</LoadingStyled>;
+  } else if (isLoggedIn === true) {
+    visibleMenu = <UserMenu />;
+  } else if (isLoggedIn === false && loading === false) {
+    visibleMenu = (
+      <NavContainerStyled>
+        <NavLinkStyled to="/register">Sign up</NavLinkStyled>
+        <NavLinkStyled to="/login">Sign in</NavLinkStyled>
+      </NavContainerStyled>
+    );
+  }
+
   return (
     <>
       <SectionStyled>
-        <ToastContainer />
+        <ToastContainer position="top-center" />
         <HeaderStyled>
           <NavContainerStyled>
             <NavLinkStyled to="/home">Home</NavLinkStyled>
-            <NavLinkStyled to="/contacts">Contacts</NavLinkStyled>
+            {isLoggedIn && (
+              <NavLinkStyled to="/contacts">Contacts</NavLinkStyled>
+            )}
           </NavContainerStyled>
-          {isLoggedIn ? (
-            <UserMenu />
-          ) : (
-            <NavContainerStyled>
-              <NavLinkStyled to="/register">Sign up</NavLinkStyled>
-              <NavLinkStyled to="/login">Sign in</NavLinkStyled>
-            </NavContainerStyled>
-          )}
+          {visibleMenu}
         </HeaderStyled>
         <hr />
         <Outlet />
@@ -33,6 +49,13 @@ export default function Layout() {
     </>
   );
 }
+
+export const LoadingStyled = styled.p`
+  margin: 0;
+  font-size: 20px;
+  font-weight: 700;
+  color: blue;
+`;
 
 export const HeaderStyled = styled.header`
   padding-top: 20px;

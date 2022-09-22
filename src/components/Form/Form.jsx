@@ -1,14 +1,13 @@
 // import { useState } from 'react';
-import { nanoid } from 'nanoid';
-import PropTypes from 'prop-types';
-import { useLocalStorage } from 'hooks';
 import {
-  FormStyled,
-  LabelStyled,
   ButtonStyled,
-  LabelSpanStyled,
+  FormStyled,
   InputStyled,
+  LabelSpanStyled,
+  LabelStyled,
 } from 'components';
+import { useLocalStorage } from 'hooks';
+import PropTypes from 'prop-types';
 
 export const Form = ({ onSubmit }) => {
   const [name, setName] = useLocalStorage('name', '');
@@ -30,11 +29,9 @@ export const Form = ({ onSubmit }) => {
   };
 
   const createContact = () => {
-    const id = nanoid();
     const contact = {
       name,
       number,
-      id,
     };
     return contact;
   };
