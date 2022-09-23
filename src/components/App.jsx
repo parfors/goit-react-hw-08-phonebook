@@ -12,6 +12,7 @@ export const App = () => {
     <>
       <Routes>
         <Route path="/" element={<Layout />}>
+          <Route index path="/home" element={<Home />} />
           <Route element={<PublicRoute />}>
             <Route path="register" element={<Register />} />
             <Route path="login" element={<Login />} />
@@ -19,7 +20,6 @@ export const App = () => {
           <Route element={<PrivateRoute />}>
             <Route path="contacts" element={<Contacts />} />
           </Route>
-          <Route path="home" element={<Home />} />
         </Route>
       </Routes>
     </>

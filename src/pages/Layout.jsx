@@ -2,7 +2,7 @@ import { SectionStyled } from 'components';
 import UserMenu from 'components/UserMenu/UserMenu';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { NavLink, Outlet } from 'react-router-dom';
+import { NavLink, Outlet, Navigate, useLocation } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import { checkCurrentLogin } from 'redux/authorization/auth-operations';
 import { getIsLogIn, getLoading } from 'redux/selectors';
@@ -10,6 +10,8 @@ import styled from 'styled-components';
 
 export default function Layout() {
   const dispatch = useDispatch();
+  const location = useLocation();
+
   useEffect(() => {
     dispatch(checkCurrentLogin());
   }, [dispatch]);
@@ -32,6 +34,7 @@ export default function Layout() {
 
   return (
     <>
+      {location.pathname === '/' && <Navigate to="/home" />}
       <SectionStyled>
         <ToastContainer position="top-center" />
         <HeaderStyled>
